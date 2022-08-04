@@ -1,9 +1,6 @@
 const express = require('express');
 const cors=require('cors');
 var app = express();
-app.use(cors({
-    origin: "https://master--deluxe-sable-a44c90.netlify.app/"
-}))
 
 const PORT=process.env.PORT || 3002;
 
