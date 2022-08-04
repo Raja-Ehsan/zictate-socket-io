@@ -9,7 +9,7 @@ const server =app.listen( PORT, () => {
 })
 const io= require('socket.io')(server,{
     cors:{
-        origin: "https://master--deluxe-sable-a44c90.netlify.app/",
+        origin: "https://master--deluxe-sable-a44c90.netlify.app",
     }
 })
 app.get('/',(req,res)=>{
