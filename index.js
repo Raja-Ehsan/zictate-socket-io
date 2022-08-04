@@ -1,15 +1,20 @@
 const express = require('express');
 const cors=require('cors');
 var app = express();
-
-
-const PORT=process.env.PORT;
-
-
 app.use(cors({
-    origin: "https://master--deluxe-sable-a44c90.netlify.app"
+    origin: "https://master--deluxe-sable-a44c90.netlify.app/"
 }))
-const io= require('socket.io')()
+
+const PORT=process.env.PORT || 3002;
+
+const server =app.listen( PORT, () => {
+    console.log(`Server started on ${PORT}`)
+})
+const io= require('socket.io')(server,{
+    cors:{
+        origin: "https://master--deluxe-sable-a44c90.netlify.app/",
+    }
+})
 app.get('/',(req,res)=>{
     res.write(`SOcket started on ${PORT}`);
     res.send();
@@ -55,7 +60,5 @@ io.on('connection', socket=>{
         removeUser(socket.id)
         io.emit("getUsers",users)
     }) 
-} ) 
-io.listen( PORT, () => {
-    console.log("Server started on port 3001")
-})
+} )
+
