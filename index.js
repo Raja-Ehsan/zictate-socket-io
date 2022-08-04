@@ -7,7 +7,7 @@ const PORT=process.env.PORT || 3002;
 
 
 app.use(cors({
-    origin: "https://master--deluxe-sable-a44c90.netlify.app"
+    origin: "https://master--deluxe-sable-a44c90.netlify.app/"
 }))
 const io= require('socket.io')()
 app.get('/',(req,res)=>{
@@ -57,6 +57,6 @@ io.on('connection', socket=>{
     }) 
 } )
 
-app.listen( PORT, () => {
+io.listen( PORT, () => {
     console.log("Server started on port 3001")
 })
